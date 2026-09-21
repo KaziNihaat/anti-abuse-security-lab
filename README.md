@@ -2,9 +2,6 @@
 
 > A small Flask-based defensive security lab exploring **account quotas, IP rate limiting, browser-session/device correlation, and risk scoring** on localhost.
 
-<p align="center">
-  <img src="docs/images/cover.jpg" alt="Anti-Abuse Security Lab" width="900">
-</p>
 
 ## The story
 
@@ -55,26 +52,16 @@ The first requests from the account are accepted and the server records both acc
 
 After three successful uses, the same account receives `429 Too Many Requests`.
 
-<p align="center">
-  <img src="docs/images/account-limit.jpeg" alt="Account limit reached" width="430">
-</p>
 
 ### 3. A new account does not erase network history
 
 A different account starts with a fresh account counter, but the server still sees cumulative activity from the same localhost IP. Once the shared network limit is reached, another account is restricted too.
 
-<p align="center">
-  <img src="docs/images/ip-limit.jpeg" alt="Network/IP limit reached" width="430">
-</p>
 
 ### 4. Multiple accounts can be correlated inside the lab session
 
 With two accounts on one lab device/session, the demo risk score becomes **25**. With three accounts, it becomes **50**.
 
-<p align="center">
-  <img src="docs/images/risk-score-25.jpeg" alt="Risk score 25" width="430">
-  <img src="docs/images/risk-score-50.jpeg" alt="Risk score 50" width="430">
-</p>
 
 The project also adds IP activity to the score. For example, three accounts plus higher IP activity can raise the score further and eventually cross the configured threshold.
 
